@@ -1,0 +1,23 @@
+:root{
+    --Gray:hsl(0, 0%, 75%);
+    --Grayish-Violet:hsl(257, 7%, 63%);
+    --Very-Dark-Blue:hsl(255, 11%, 22%);
+    --Very-Dark-Violet:hsl(260, 8%, 14%);
+    --Cyan: hsl(180, 66%, 49%);
+    --Dark-Violet: hsl(257, 27%, 26%)
+    }
+    .search{
+        background-color: var(--Very-Dark-Blue);
+        background-image: url(../images/bg-shorten-desktop.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+       
+    }
+    li{ 
+           display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+ 

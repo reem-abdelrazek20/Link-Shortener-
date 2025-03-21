@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#28dec0',
+              secondary: '#da373d',
+            }
+          }
+        }
+      }
+  </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+<!-- هيدر -->
+<section class="header py-4">
+  <div class="flex justify-between items-center px-6 md:px-12">
+    <div class="flex items-center">
+      <img src="images/logo.svg" alt="logo" class="h-8">
+      <nav class="hidden sm:block">
+        <ul class="flex ml-8 space-x-6">
+          <li class="text-[var(--Gray)] hover:text-black cursor-pointer">Features</li>
+          <li class="text-[var(--Gray)] hover:text-black cursor-pointer">Pricing</li>
+          <li class="text-[var(--Gray)] hover:text-black cursor-pointer">Resources</li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- أزرار -->
+    <div class="sm:flex items-center space-x-4 hidden">
+      <button class="text-[var(--Gray)] hover:text-black px-4 py-1">Login</button>
+      <button class="bg-[var(--Cyan)] text-white px-5 py-2 rounded-full shadow-md hover:opacity-80 transition">
+        Sign Up
+      </button>
+    </div>
+
+    <!-- زر القائمة للجوال -->
+    <div id="menu-btn" class="sm:hidden cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- قائمة الجوال -->
+<nav id="mobile-menu" class="hidden bg-[var(--Very-Dark-Blue)] rounded-lg p-5">
+  <ul class="space-y-4 text-center">
+    <li class="text-white hover:text-gray-300 cursor-pointer">Features</li>
+    <li class="text-white hover:text-gray-300 cursor-pointer">Pricing</li>
+    <li class="text-white hover:text-gray-300 cursor-pointer">Resources</li>
+  </ul>
+</nav>
+
+<!-- قسم الصفحة الرئيسية -->
+<section class="home py-12 mb-10">
+  <div class="container mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+          More than just shorter links
+        </h1>
+        <p class="text-gray-500 mt-4 text-lg">
+          Build your brand’s recognition and get detailed insights 
+          on how your links are performing.
+        </p>
+        <button class="mt-6 bg-[var(--Cyan)] text-white px-6 py-3 rounded-full shadow-md hover:opacity-80 transition">
+          Get Started
+        </button>
+      </div>
+
+      <div class="flex justify-center">
+        <img src="images/illustration-working.svg" alt="Illustration" class="max-w-md w-full">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- قسم البحث -->
+<section class="relative py-16 bg-[var(--Gray)]">
+  <section class="search absolute max-w-3xl w-full left-1/2 transform -translate-x-1/2 top-[-40px] md:top-[-60px] p-6 md:p-8 rounded-lg shadow-lg ">
+    <div class="px-6 md:px-12">
+      <div class="flex flex-col md:flex-row gap-4">
+        <input type="text" placeholder="Shorten a link here..." class="input flex-1 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--Cyan)]">
+        <button class="search-button bg-[var(--Cyan)] text-white px-6 py-3 rounded-lg shadow-md font-semibold hover:opacity-80 transition">
+          Shorten It!
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="container mx-auto px-6 text-center mt-40 ">
+    <ul class="shortened-url"></ul>
+  </div>
+
+  <div class="container mx-auto px-6 text-center mt-40  ">
+    <h1 class="text-3xl md:text-5xl font-bold leading-tight text-gray-800">
+      Advanced Statistics
+    </h1>
+    <p class="text-gray-600 text-lg max-w-xl mx-auto mt-4">
+      Track how your links are performing across the web with our 
+      advanced statistics dashboard.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+  
+    <!-- البطاقة الأولى -->
+    <div class="bg-white text-center p-6 rounded-lg shadow-md relative">
+      <div class="w-16 h-16 bg-indigo-900 text-white flex items-center justify-center rounded-full mx-auto -mt-12 shadow-lg">
+        <img src="images/icon-brand-recognition.svg" alt="Brand Recognition" class="w-8">
+      </div>
+      <h2 class="text-xl font-bold mt-4">Brand Recognition</h2>
+      <p class="text-gray-600 mt-2">
+        Boost your brand recognition with each click. Generic links don’t 
+        mean a thing. Branded links help instill confidence in your content.
+      </p>
+    </div>
+  
+    <!-- البطاقة الثانية -->
+    <div class="bg-white text-center p-6 rounded-lg shadow-md relative">
+      <div class="w-16 h-16 bg-indigo-900 text-white flex items-center justify-center rounded-full mx-auto -mt-12 shadow-lg">
+        <img src="images/icon-detailed-records.svg" alt="Detailed Records" class="w-8">
+      </div>
+      <h2 class="text-xl font-bold mt-4">Detailed Records</h2>
+      <p class="text-gray-600 mt-2">
+        Gain insights into who is clicking your links. Knowing when and where 
+        people engage with your content helps optimize performance.
+      </p>
+    </div>
+  
+    <!-- البطاقة الثالثة -->
+    <div class="bg-white text-center p-6 rounded-lg shadow-md relative">
+      <div class="w-16 h-16 bg-indigo-900 text-white flex items-center justify-center rounded-full mx-auto -mt-12 shadow-lg">
+        <img src="images/icon-fully-customizable.svg" alt="Fully Customizable" class="w-8">
+      </div>
+      <h2 class="text-xl font-bold mt-4">Fully Customizable</h2>
+      <p class="text-gray-600 mt-2">
+        Improve brand awareness and content discoverability through customizable 
+        links, supercharging audience engagement.
+      </p>
+    </div>
+  
+  </div>
+  
+  
+</section>
+
+<section class="Footer">
+  <div class="search  text-center py-14 ">
+ <p class="text-2xl font-bold text-white ">Boost your links today</p>
+   <button class="mt-6 bg-[var(--Cyan)] text-white px-6 py-3 rounded-full shadow-md hover:opacity-80 transition">  Get Started </button>
+
+  </div>
+  
+
+  
+  <footer class="bg-gray-900 text-white py-10" id="footer">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12  md:text-left">
+            
+            <!-- Features -->
+            <div>
+                <h6 class="font-semibold text-lg mb-3 text-white">Features</h6>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-gray-400 transition-colors">Link Shortening</a></li>
+                    <li><a href="#" class="hover:text-gray-400 transition-colors">Branded Links</a></li>
+                    <li><a href="#" class="hover:text-gray-400 transition-colors">Analytics</a></li>
+                </ul>
+            </div>
+  
+            <!-- Company -->
+            <div>
+                <h6 class="font-semibold text-lg mb-3 text-white">Company</h6>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-gray-400 transition-colors">About</a></li>
+                    <li><a href="#" class="hover:text-gray-400 transition-colors">Careers</a></li>
+                    <li><a href="#" class="hover:text-gray-400 transition-colors">Our Team</a></li>
+                    <li><a href="#" class="hover:text-gray-400 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+  
+            <!-- Resources -->
+            <div>
+                <h6 class="font-semibold text-lg mb-3 text-white">Resources</h6>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-gray-400 transition-colors">Blog</a></li> 
+                    <li><a href="#" class="hover:text-gray-400 transition-colors">Developers</a></li>
+                    <li><a href="#" class="hover:text-gray-400 transition-colors">Support</a></li>
+                </ul>
+            </div>
+  
+            <!-- Social Media -->
+            <div class="flex space-x-4 justify-center md:justify-start text-xl mt-4 md:mt-0">
+                <a href="#" aria-label="Facebook" target="_blank" class="hover:text-blue-500 transition-colors">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" aria-label="Instagram" target="_blank" class="hover:text-pink-500 transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" aria-label="Twitter" target="_blank" class="hover:text-gray-500 transition-colors">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+  
+        <!-- Copyright -->
+        <div class="text-center mt-10 text-gray-400 text-sm">
+          Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" class="underline">Frontend Mentor</a>. 
+          Coded by <a href="#" class="underline">Reem</a>.
+        </div>
+    </div>
+  </footer>
+  
+
+</section>
+
+
+
+  
+  <script src="js/js.js"></script>
+  
+  
+</body>
+</html>
