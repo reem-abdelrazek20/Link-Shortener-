@@ -1,7 +1,7 @@
 # 🔗 Link Shortener
 
 This is a simple website to make long links shorter.  
-It uses the [TinyURL API](https://tinyurl.com) to create short links.
+
 
 ## 💡 What does it do?
 
@@ -14,7 +14,7 @@ It uses the [TinyURL API](https://tinyurl.com) to create short links.
 
 - **HTML** – to build the page
 - **Tailwind CSS** – to style the page easily
-- **JavaScript (Fetch API)** – to get the short link from TinyURL
+- **JavaScript (Fetch API)** – to get the short link 
 
 ## 🧠 What I learned
 
